@@ -1,0 +1,71 @@
+
+
+
+
+
+
+import React from "react";
+import { Text, TouchableOpacity } from "react-native";
+import { View } from "react-native";
+import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
+export const MenuBar = () => {
+  const navigation = useNavigation();
+
+  const handleMenuPress = (screen: string) => {
+    navigation.navigate(screen as never);
+  };
+
+  return (
+    <View style={styles.containerBar}>
+      <TouchableOpacity
+        style={styles.menuButton}
+        onPress={() => handleMenuPress("Alerta")}
+      >
+        <MaterialCommunityIcons name="alert" size={30} color="black" />
+        <Text style={styles.buttonTextBar}>Alerta</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.menuButton}
+        onPress={() => handleMenuPress("Eventos")}
+      >
+        <MaterialIcons name="event-note" size={30} color="black" />
+        <Text style={styles.buttonTextBar}>Eventos</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.menuButton}
+        onPress={() => handleMenuPress("Perfil")}
+      >
+        <AntDesign name="setting" size={30} color="black" />
+        <Text style={styles.buttonTextBar}>Perfil</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  containerBar: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    /*  backgroundColor: "#394491", */
+    backgroundColor: "#FFFFFF",
+    height: 100,
+  },
+
+  menuButton: {
+    padding: 10,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonTextBar: {
+    color: "black",
+    fontSize: 16,
+  },
+});
